@@ -1,8 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.*;
-import java.util.ArrayList;
-
 public class BibliotecaApp {
     private static Library library;
     private static Menu menu;

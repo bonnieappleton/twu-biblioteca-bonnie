@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Menu {
     private static ArrayList<MenuItem> menu;
@@ -14,11 +13,15 @@ public class Menu {
 
     public static ArrayList<MenuItem> createMenu() {
         ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
+
         MenuItem books = new ListBooksOption();
         MenuItem checkoutBook = new CheckoutBookOption();
+        MenuItem returnBook = new ReturnBookOption();
         MenuItem quit = new QuitOption();
+
         menu.add(books);
         menu.add(checkoutBook);
+        menu.add(returnBook);
         menu.add(quit);
 
         return menu;
@@ -96,12 +99,33 @@ public class Menu {
 
             for (Book book : library.getLibrary()) {
                 if (lowercaseInput.equals(book.getName())) {
-                    if (book.isCheckedOut) {
-                        System.out.println("That book is not available");
-                    } else {
-                        book.checkout();
-                        bookIsValid = true;
-                    }
+                    book.checkoutBook();
+                    bookIsValid = true;
+                }
+            }
+            if (!bookIsValid) {
+                System.out.println("Sorry, that's not a valid book :(");
+            }
+            System.out.println();
+        }
+    }
+
+    public static class ReturnBookOption extends MenuItem {
+
+        public ReturnBookOption() {
+            setNames("Return a book");
+        }
+
+        public void menuAction() {
+            InputHelper helper = new InputHelper();
+            String input = helper.getUserInput("Which book would you like to return?");
+            String lowercaseInput = input.toLowerCase();
+            Boolean bookIsValid = false;
+
+            for (Book book : library.getLibrary()) {
+                if (lowercaseInput.equals(book.getName())) {
+                    book.returnBook();
+                    bookIsValid = true;
                 }
             }
             if (!bookIsValid) {

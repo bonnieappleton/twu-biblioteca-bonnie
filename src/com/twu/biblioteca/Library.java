@@ -32,6 +32,7 @@ public class Library {
                 System.out.println(details.get("title") + " | " + details.get("author") + " | " + details.get("year"));
             }
         }
+        System.out.println();
     }
 
     public ArrayList<Book> getLibrary() {
