@@ -5,16 +5,20 @@ import java.util.*;
 public class Content {
     private String name;
     private String title;
+    private int year;
+
     public Boolean isCheckedOut = false;
 
-    public Content(String title) {
+    public Content(String title, int year) {
         this.name = title.toLowerCase();
         this.title = title;
+        this.year = year;
     }
 
     public HashMap getDetails() {
         HashMap details = new HashMap();
         details.put("title", this.title);
+        details.put("year", this.year);
 
         return details;
     }

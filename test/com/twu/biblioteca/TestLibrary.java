@@ -8,8 +8,8 @@ public class TestLibrary {
 
     @Test
     public void testCreateLibrary() {
-        ArrayList<Book> bookArray = Library.createLibrary();
+        ArrayList<Content> bookArray = Library.createLibrary();
         int bookListLength = bookArray.size();
-        assertEquals(3, bookListLength);
+        assertEquals(5, bookListLength);
     }
 }

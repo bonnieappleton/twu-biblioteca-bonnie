@@ -10,13 +10,4 @@ import java.util.ArrayList;
 
 public class TestBibliotecaApp {
 
-    @Test
-    public void testCreateBookList() {
-        ArrayList<Book> list = Library.createLibrary();
-        assertNotNull(list);
-    }
-
-
-
-
 }

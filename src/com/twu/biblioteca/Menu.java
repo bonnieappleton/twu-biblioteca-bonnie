@@ -95,15 +95,15 @@ public class Menu {
             InputHelper helper = new InputHelper();
             String input = helper.getUserInput("Which book or movie would you like to check out?");
             String lowercaseInput = input.toLowerCase();
-            Boolean bookIsValid = false;
+            Boolean isValid = false;
 
-            for (Book book : library.getLibrary()) {
-                if (lowercaseInput.equals(book.getName())) {
-                    book.checkoutContent();
-                    bookIsValid = true;
+            for (Content content : library.getLibrary()) {
+                if (lowercaseInput.equals(content.getName())) {
+                    content.checkoutContent();
+                    isValid = true;
                 }
             }
-            if (!bookIsValid) {
+            if (!isValid) {
                 System.out.println("Sorry, we don't have that :(");
             }
             System.out.println();
@@ -120,15 +120,15 @@ public class Menu {
             InputHelper helper = new InputHelper();
             String input = helper.getUserInput("Which book or movie would you like to return?");
             String lowercaseInput = input.toLowerCase();
-            Boolean bookIsValid = false;
+            Boolean isValid = false;
 
-            for (Book book : library.getLibrary()) {
-                if (lowercaseInput.equals(book.getName())) {
-                    book.returnContent();
-                    bookIsValid = true;
+            for (Content content : library.getLibrary()) {
+                if (lowercaseInput.equals(content.getName())) {
+                    content.returnContent();
+                    isValid = true;
                 }
             }
-            if (!bookIsValid) {
+            if (!isValid) {
                 System.out.println("Sorry, you can't return that :(");
             }
             System.out.println();
