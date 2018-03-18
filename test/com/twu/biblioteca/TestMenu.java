@@ -12,7 +12,7 @@ public class TestMenu {
     public void testCreateMenu() {
         ArrayList<Menu.MenuItem> menu = Menu.createMenu();
         int menuLength = menu.size();
-        assertEquals(4, menuLength);
+        assertEquals(5, menuLength);
     }
 
     @Test

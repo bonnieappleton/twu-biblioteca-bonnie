@@ -4,43 +4,99 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Library {
-    private ArrayList<Content> library;
+    private ArrayList<Book> bookList = new ArrayList<Book>();
+    private ArrayList<Movie> movieList = new ArrayList<Movie>();
+    private ArrayList<Content> library = new ArrayList<Content>();
 
     public Library() {
-        this.library = createLibrary();
+        createBookList();
+        createMovieList();
+        createLibrary();
     }
 
-    public static ArrayList<Content> createLibrary() {
-        ArrayList<Content> library = new ArrayList<Content>();
-
+    public void createBookList() {
         Book book1 = new Book("Head First Java", "Kathy Sierra", 2000);
         Book book2 = new Book("Nights At The Circus", "Angela Carter", 1985);
         Book book3 = new Book("Kafka On The Shore", "Haruki Murakami", 1999);
 
+        this.bookList.add(book1);
+        this.bookList.add(book2);
+        this.bookList.add(book3);
+    }
+
+    public void createMovieList() {
         Movie movie1 = new Movie("Princess Mononoke", "Hayao Miyazaki", 1997, 10);
         Movie movie2 = new Movie("Ladybird", "Greta Gerwig", 2018);
 
-        library.add(book1);
-        library.add(book2);
-        library.add(book3);
-        library.add(movie1);
-        library.add(movie2);
-
-        return library;
+        this.movieList.add(movie1);
+        this.movieList.add(movie2);
     }
 
-    public void displayLibrary() {
+    public void createLibrary() {
+        library.addAll(bookList);
+        library.addAll(movieList);
+    }
+
+    public void displayBooks() {
         System.out.println("Here are some books:");
-        for (Content content : this.library) {
+        for (Book content : this.bookList) {
             if (!content.isCheckedOut) {
-                HashMap details = content.getDetails();
-                System.out.println(details.get("title") + " | " + details.get("author") + " | " + details.get("year"));
+                System.out.println(content.getTitle() + " | " + content.getAuthor() + " | " + content.getYear());
             }
         }
         System.out.println();
     }
 
-    public ArrayList<Content> getLibrary() {
-        return this.library;
+    public void displayMovies() {
+        System.out.println("Here are some movies:");
+        for (Movie content : this.movieList) {
+            if (!content.isCheckedOut) {
+                System.out.print(content.getTitle() + " | " + content.getDirector() + " | " + content.getYear() + " | ");
+                int rating = content.getRating();
+                if (rating == 0) {
+                    System.out.println("Unrated");
+                } else {
+                    System.out.println(rating + " *");
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public void checkoutItems() {
+        InputHelper helper = new InputHelper();
+        String input = helper.getUserInput("Which book or movie would you like to check out?");
+        String lowercaseInput = input.toLowerCase();
+        Boolean isValid = false;
+
+        for (Content content : library) {
+            if (lowercaseInput.equals(content.getName())) {
+                content.checkoutContent();
+                isValid = true;
+            }
+        }
+        if (!isValid) {
+            System.out.println("Sorry, we don't have that :(");
+        }
+
+        System.out.println();
+    }
+
+    public void returnItems() {
+        InputHelper helper = new InputHelper();
+        String input = helper.getUserInput("Which book or movie would you like to return?");
+        String lowercaseInput = input.toLowerCase();
+        Boolean isValid = false;
+
+        for (Content content : library) {
+            if (lowercaseInput.equals(content.getName())) {
+                content.returnContent();
+                isValid = true;
+            }
+        }
+        if (!isValid) {
+            System.out.println("Sorry, you can't return that :(");
+        }
+        System.out.println();
     }
 }

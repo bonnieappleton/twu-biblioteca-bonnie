@@ -9,7 +9,8 @@ public class BibliotecaApp {
         library = new Library();
         menu = new Menu(library);
 
-        library.displayLibrary();
+        library.displayBooks();
+        library.displayMovies();
 
         while (true) {
             menu.displayMenu();

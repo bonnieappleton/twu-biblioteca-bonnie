@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.*;
-
 public class Content {
     private String name;
     private String title;
@@ -15,16 +13,16 @@ public class Content {
         this.year = year;
     }
 
-    public HashMap getDetails() {
-        HashMap details = new HashMap();
-        details.put("title", this.title);
-        details.put("year", this.year);
-
-        return details;
+    public String getTitle() {
+        return this.title;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public int getYear() {
+        return this.year;
     }
 
     public void checkoutContent() {

@@ -6,10 +6,5 @@ import java.util.ArrayList;
 
 public class TestLibrary {
 
-    @Test
-    public void testCreateLibrary() {
-        ArrayList<Content> bookArray = Library.createLibrary();
-        int bookListLength = bookArray.size();
-        assertEquals(5, bookListLength);
-    }
+
 }

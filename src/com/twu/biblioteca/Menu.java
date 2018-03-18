@@ -15,11 +15,13 @@ public class Menu {
         ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
 
         MenuItem books = new ListBooksOption();
+        MenuItem movies = new ListMoviesOption();
         MenuItem checkoutBook = new CheckoutOption();
         MenuItem returnBook = new ReturnOption();
         MenuItem quit = new QuitOption();
 
         menu.add(books);
+        menu.add(movies);
         menu.add(checkoutBook);
         menu.add(returnBook);
         menu.add(quit);
@@ -81,7 +83,18 @@ public class Menu {
         }
 
         public void menuAction() {
-            library.displayLibrary();
+            library.displayBooks();
+        }
+    }
+
+    public static class ListMoviesOption extends MenuItem {
+
+        public ListMoviesOption() {
+            setNames("List movies");
+        }
+
+        public void menuAction() {
+            library.displayMovies();
         }
     }
 
@@ -92,21 +105,7 @@ public class Menu {
         }
 
         public void menuAction() {
-            InputHelper helper = new InputHelper();
-            String input = helper.getUserInput("Which book or movie would you like to check out?");
-            String lowercaseInput = input.toLowerCase();
-            Boolean isValid = false;
-
-            for (Content content : library.getLibrary()) {
-                if (lowercaseInput.equals(content.getName())) {
-                    content.checkoutContent();
-                    isValid = true;
-                }
-            }
-            if (!isValid) {
-                System.out.println("Sorry, we don't have that :(");
-            }
-            System.out.println();
+            library.checkoutItems();
         }
     }
 
@@ -117,21 +116,7 @@ public class Menu {
         }
 
         public void menuAction() {
-            InputHelper helper = new InputHelper();
-            String input = helper.getUserInput("Which book or movie would you like to return?");
-            String lowercaseInput = input.toLowerCase();
-            Boolean isValid = false;
-
-            for (Content content : library.getLibrary()) {
-                if (lowercaseInput.equals(content.getName())) {
-                    content.returnContent();
-                    isValid = true;
-                }
-            }
-            if (!isValid) {
-                System.out.println("Sorry, you can't return that :(");
-            }
-            System.out.println();
+            library.returnItems();
         }
     }
 

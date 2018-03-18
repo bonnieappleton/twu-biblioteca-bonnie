@@ -21,15 +21,11 @@ public class Movie extends Content {
         }
     }
 
-    public HashMap getDetails() {
-        HashMap details = super.getDetails();
-        details.put("director", this.director);
-        if (this.rating == 0) {
-            details.put("rating", "unrated");
-        } else {
-            details.put("rating", this.rating);
-        }
+    public String getDirector() {
+        return this.director;
+    }
 
-        return details;
+    public int getRating() {
+        return this.rating;
     }
 }
