@@ -18,4 +18,11 @@ public class TestBook {
 
         assertEquals(expectedDetails, actualDetails);
     }
+
+    @Test
+    public void testCheckout() {
+        Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
+        testBook.checkout();
+        assertEquals(true, testBook.isCheckedOut);
+    }
 }

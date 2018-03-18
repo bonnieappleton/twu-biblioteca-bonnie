@@ -4,11 +4,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 
-public class TestBookList {
+public class TestLibrary {
 
     @Test
-    public void testCreateBookList() {
-        ArrayList<Book> bookArray = BookList.createBookList();
+    public void testCreateLibrary() {
+        ArrayList<Book> bookArray = Library.createLibrary();
         int bookListLength = bookArray.size();
         assertEquals(3, bookListLength);
     }

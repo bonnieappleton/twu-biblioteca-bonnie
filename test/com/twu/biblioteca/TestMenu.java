@@ -12,20 +12,20 @@ public class TestMenu {
     public void testCreateMenu() {
         ArrayList<Menu.MenuItem> menu = Menu.createMenu();
         int menuLength = menu.size();
-        assertEquals(2, menuLength);
+        assertEquals(3, menuLength);
     }
 
     @Test
     public void testGetMenuItemName() {
-        Menu.MenuItem menuItem = new Menu.MenuItem("Go here");
+        Menu.ListBooksOption menuItem = new Menu.ListBooksOption();
         String name = menuItem.getName();
-        assertEquals("go here", name);
+        assertEquals("list books", name);
     }
 
     @Test
     public void testGetMenuItemDisplayName() {
-        Menu.MenuItem menuItem = new Menu.MenuItem("Go here");
+        Menu.MenuItem menuItem = new Menu.ListBooksOption();
         String name = menuItem.getDisplayName();
-        assertEquals("Go here", name);
+        assertEquals("List books", name);
     }
 }
