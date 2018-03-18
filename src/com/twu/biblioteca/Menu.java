@@ -15,8 +15,8 @@ public class Menu {
         ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
 
         MenuItem books = new ListBooksOption();
-        MenuItem checkoutBook = new CheckoutBookOption();
-        MenuItem returnBook = new ReturnBookOption();
+        MenuItem checkoutBook = new CheckoutOption();
+        MenuItem returnBook = new ReturnOption();
         MenuItem quit = new QuitOption();
 
         menu.add(books);
@@ -85,51 +85,51 @@ public class Menu {
         }
     }
 
-    public static class CheckoutBookOption extends MenuItem {
+    public static class CheckoutOption extends MenuItem {
 
-        public CheckoutBookOption() {
-            setNames("Checkout a book");
+        public CheckoutOption() {
+            setNames("Checkout an item");
         }
 
         public void menuAction() {
             InputHelper helper = new InputHelper();
-            String input = helper.getUserInput("Which book would you like to check out?");
+            String input = helper.getUserInput("Which book or movie would you like to check out?");
             String lowercaseInput = input.toLowerCase();
             Boolean bookIsValid = false;
 
             for (Book book : library.getLibrary()) {
                 if (lowercaseInput.equals(book.getName())) {
-                    book.checkoutBook();
+                    book.checkoutContent();
                     bookIsValid = true;
                 }
             }
             if (!bookIsValid) {
-                System.out.println("Sorry, that's not a valid book :(");
+                System.out.println("Sorry, we don't have that :(");
             }
             System.out.println();
         }
     }
 
-    public static class ReturnBookOption extends MenuItem {
+    public static class ReturnOption extends MenuItem {
 
-        public ReturnBookOption() {
-            setNames("Return a book");
+        public ReturnOption() {
+            setNames("Return an item");
         }
 
         public void menuAction() {
             InputHelper helper = new InputHelper();
-            String input = helper.getUserInput("Which book would you like to return?");
+            String input = helper.getUserInput("Which book or movie would you like to return?");
             String lowercaseInput = input.toLowerCase();
             Boolean bookIsValid = false;
 
             for (Book book : library.getLibrary()) {
                 if (lowercaseInput.equals(book.getName())) {
-                    book.returnBook();
+                    book.returnContent();
                     bookIsValid = true;
                 }
             }
             if (!bookIsValid) {
-                System.out.println("Sorry, that's not a valid book :(");
+                System.out.println("Sorry, you can't return that :(");
             }
             System.out.println();
         }

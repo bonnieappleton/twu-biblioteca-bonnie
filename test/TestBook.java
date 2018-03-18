@@ -22,30 +22,30 @@ public class TestBook {
     @Test
     public void testCheckout() {
         Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
-        testBook.checkoutBook();
+        testBook.checkoutContent();
         assertEquals(true, testBook.isCheckedOut);
     }
 
     @Test
     public void testUnsuccessfulCheckout() {
         Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
-        testBook.checkoutBook();
-        testBook.checkoutBook();
+        testBook.checkoutContent();
+        testBook.checkoutContent();
         assertEquals(true, testBook.isCheckedOut);
     }
 
     @Test
     public void testReturn() {
         Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
-        testBook.checkoutBook();
-        testBook.returnBook();
+        testBook.checkoutContent();
+        testBook.returnContent();
         assertEquals(false, testBook.isCheckedOut);
     }
 
     @Test
     public void testUnsuccessfulReturn() {
         Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
-        testBook.returnBook();
+        testBook.returnContent();
         assertEquals(false, testBook.isCheckedOut);
     }
 }
