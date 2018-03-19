@@ -14,12 +14,14 @@ public class Menu {
     public static ArrayList<MenuItem> createMenu() {
         ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
 
+        MenuItem login = new LoginOption();
         MenuItem books = new ListBooksOption();
         MenuItem movies = new ListMoviesOption();
         MenuItem checkoutBook = new CheckoutOption();
         MenuItem returnBook = new ReturnOption();
         MenuItem quit = new QuitOption();
 
+        menu.add(login);
         menu.add(books);
         menu.add(movies);
         menu.add(checkoutBook);
@@ -74,6 +76,17 @@ public class Menu {
         }
 
         public abstract void menuAction();
+    }
+
+    public static class LoginOption extends MenuItem {
+
+        public LoginOption() {
+            setNames("Login");
+        }
+
+        public void menuAction() {
+            Authentication.login();
+        }
     }
 
     public static class ListBooksOption extends MenuItem {

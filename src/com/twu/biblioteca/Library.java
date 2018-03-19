@@ -14,21 +14,11 @@ public class Library {
     }
 
     public void createBookList() {
-        Book book1 = new Book("Head First Java", "Kathy Sierra", 2000);
-        Book book2 = new Book("Nights At The Circus", "Angela Carter", 1985);
-        Book book3 = new Book("Kafka On The Shore", "Haruki Murakami", 1999);
-
-        this.bookList.add(book1);
-        this.bookList.add(book2);
-        this.bookList.add(book3);
+        bookList = CSVReader.getBooks();
     }
 
     public void createMovieList() {
-        Movie movie1 = new Movie("Princess Mononoke", "Hayao Miyazaki", 1997, 10);
-        Movie movie2 = new Movie("Ladybird", "Greta Gerwig", 2018);
-
-        this.movieList.add(movie1);
-        this.movieList.add(movie2);
+        movieList = CSVReader.getMovies();
     }
 
     public void createLibrary() {

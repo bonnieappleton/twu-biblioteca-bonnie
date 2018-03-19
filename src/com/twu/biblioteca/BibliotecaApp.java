@@ -1,13 +1,11 @@
 package com.twu.biblioteca;
 
 public class BibliotecaApp {
-    private static Library library;
-    private static Menu menu;
 
     public static void main(String[] args) {
         welcomeMessage();
-        library = new Library();
-        menu = new Menu(library);
+        Library library = new Library();
+        Menu menu = new Menu(library);
 
         library.displayBooks();
         library.displayMovies();
