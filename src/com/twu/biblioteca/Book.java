@@ -8,7 +8,7 @@ public class Book extends Content {
         this.author = author;
     }
 
-    public String getAuthor() {
-        return this.author;
+    public void displayInformation() {
+        System.out.println(this.getTitle() + " | " + this.author + " | " + this.getYear());
     }
 }

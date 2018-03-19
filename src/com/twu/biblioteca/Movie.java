@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.HashMap;
-
 public class Movie extends Content {
     private String director;
     private int rating = 0;
@@ -14,18 +12,26 @@ public class Movie extends Content {
     public Movie(String title, String director, int year, int rating) {
         super(title, year);
         this.director = director;
-        if (rating > 0 && rating <= 10) {
+        setRating(rating);
+    }
+
+    public void setRating(int rating) {
+        if (rating >= 0 && rating <= 10) {
             this.rating = rating;
         } else {
             System.out.println("Rating must be between 1 and 10");
         }
     }
 
-    public String getDirector() {
-        return this.director;
+    public String getRatingString() {
+        if (this.rating == 0) {
+            return "Unrated";
+        } else {
+            return rating + " *";
+        }
     }
 
-    public int getRating() {
-        return this.rating;
+    public void displayInformation() {
+        System.out.println(this.getTitle() + " | " + this.director + " | " + this.getYear() + " | " + this.getRatingString());
     }
 }

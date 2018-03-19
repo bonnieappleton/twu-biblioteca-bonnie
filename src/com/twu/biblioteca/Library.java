@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Library {
     private ArrayList<Book> bookList = new ArrayList<Book>();
@@ -40,9 +39,7 @@ public class Library {
     public void displayBooks() {
         System.out.println("Here are some books:");
         for (Book content : this.bookList) {
-            if (!content.isCheckedOut) {
-                System.out.println(content.getTitle() + " | " + content.getAuthor() + " | " + content.getYear());
-            }
+            if (!content.isCheckedOut) content.displayInformation();
         }
         System.out.println();
     }
@@ -50,15 +47,7 @@ public class Library {
     public void displayMovies() {
         System.out.println("Here are some movies:");
         for (Movie content : this.movieList) {
-            if (!content.isCheckedOut) {
-                System.out.print(content.getTitle() + " | " + content.getDirector() + " | " + content.getYear() + " | ");
-                int rating = content.getRating();
-                if (rating == 0) {
-                    System.out.println("Unrated");
-                } else {
-                    System.out.println(rating + " *");
-                }
-            }
+            if (!content.isCheckedOut) content.displayInformation();
         }
         System.out.println();
     }
@@ -75,9 +64,7 @@ public class Library {
                 isValid = true;
             }
         }
-        if (!isValid) {
-            System.out.println("Sorry, we don't have that :(");
-        }
+        if (!isValid) System.out.println("Sorry, we don't have that :(");
 
         System.out.println();
     }
@@ -94,9 +81,7 @@ public class Library {
                 isValid = true;
             }
         }
-        if (!isValid) {
-            System.out.println("Sorry, you can't return that :(");
-        }
+        if (!isValid) System.out.println("Sorry, you can't return that :(");
         System.out.println();
     }
 }

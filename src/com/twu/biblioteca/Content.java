@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Content {
+abstract class Content {
     private String name;
     private String title;
     private int year;
@@ -41,6 +41,10 @@ public class Content {
         } else {
             System.out.println("Sorry, that can't be returned");
         }
+    }
+
+    public void displayInformation() {
+        System.out.println(this.title + " | " + " | " + this.year);
     }
 }
 

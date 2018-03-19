@@ -6,32 +6,40 @@ import static org.junit.Assert.assertEquals;
 
 public class TestContent {
 
-//    @Test
-//    public void testBookDetails() {
-//        Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
-//        HashMap actualDetails = testBook.getDetails();
-//
-//        HashMap expectedDetails = new HashMap();
-//        expectedDetails.put("title", new String("Northern Lights"));
-//        expectedDetails.put("author", new String("Philip Pullman"));
-//        expectedDetails.put("year", 1995);
-//
-//        assertEquals(expectedDetails, actualDetails);
-//    }
-//
-//    @Test
-//    public void testMovieDetails() {
-//        Movie testMovie = new Movie("Amelie", "Jean-Pierre Jeunet", 1995, 9);
-//        HashMap actualDetails = testMovie.getDetails();
-//
-//        HashMap expectedDetails = new HashMap();
-//        expectedDetails.put("title", new String("Amelie"));
-//        expectedDetails.put("director", new String("Jean-Pierre Jeunet"));
-//        expectedDetails.put("year", 1995);
-//        expectedDetails.put("rating", 9);
-//
-//        assertEquals(expectedDetails, actualDetails);
-//    }
+    @Test
+    public void testGetName() {
+        Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
+        String name = testBook.getName();
+        assertEquals("northern lights", name);
+    }
+
+    @Test
+    public void testGetTitle() {
+        Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
+        String title = testBook.getTitle();
+        assertEquals("Northern Lights", title);
+    }
+
+    @Test
+    public void testGetYear() {
+        Book testBook = new Book("Northern Lights", "Philip Pullman", 1995);
+        int year = testBook.getYear();
+        assertEquals(1995, year);
+    }
+
+    @Test
+    public void testGetRatingString() {
+        Movie testMovie = new Movie("Pan's Labyrinth", "Guillermo Del Toro", 2006, 8);
+        String rating = testMovie.getRatingString();
+        assertEquals("8 *", rating);
+    }
+
+    @Test
+    public void testGetRatingStringUnrated() {
+        Movie testMovie = new Movie("Pan's Labyrinth", "Guillermo Del Toro", 2006, 0);
+        String rating = testMovie.getRatingString();
+        assertEquals("Unrated", rating);
+    }
 
     @Test
     public void testCheckout() {
