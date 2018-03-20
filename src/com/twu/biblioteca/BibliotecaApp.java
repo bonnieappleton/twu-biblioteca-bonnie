@@ -5,7 +5,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         welcomeMessage();
         Library library = new Library();
-        Menu menu = new Menu(library);
+        Authentication authentication = new Authentication();
+        Menu menu = new Menu(library, authentication);
 
         library.displayBooks();
         library.displayMovies();

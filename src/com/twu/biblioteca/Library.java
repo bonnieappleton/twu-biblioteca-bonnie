@@ -3,27 +3,29 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class Library {
-    private ArrayList<Book> bookList = new ArrayList<Book>();
-    private ArrayList<Movie> movieList = new ArrayList<Movie>();
-    private ArrayList<Content> library = new ArrayList<Content>();
+    private ArrayList<Book> bookList;
+    private ArrayList<Movie> movieList;
+    private ArrayList<Content> libraryList;
 
     public Library() {
-        createBookList();
-        createMovieList();
-        createLibrary();
+        bookList = createBookList();
+        movieList = createMovieList();
+        libraryList = createLibrary();
     }
 
-    public void createBookList() {
-        bookList = CSVReader.getBooks();
+    public ArrayList<Book> createBookList() {
+        return CSVReader.getBooks();
     }
 
-    public void createMovieList() {
-        movieList = CSVReader.getMovies();
+    public ArrayList<Movie> createMovieList() {
+        return CSVReader.getMovies();
     }
 
-    public void createLibrary() {
-        library.addAll(bookList);
-        library.addAll(movieList);
+    public ArrayList<Content> createLibrary() {
+        ArrayList<Content> content = new ArrayList<Content>();
+        content.addAll(bookList);
+        content.addAll(movieList);
+        return content;
     }
 
     public void displayBooks() {
@@ -48,7 +50,7 @@ public class Library {
         String lowercaseInput = input.toLowerCase();
         Boolean isValid = false;
 
-        for (Content content : library) {
+        for (Content content : libraryList) {
             if (lowercaseInput.equals(content.getName())) {
                 content.checkoutContent();
                 isValid = true;
@@ -65,7 +67,7 @@ public class Library {
         String lowercaseInput = input.toLowerCase();
         Boolean isValid = false;
 
-        for (Content content : library) {
+        for (Content content : libraryList) {
             if (lowercaseInput.equals(content.getName())) {
                 content.returnContent();
                 isValid = true;

@@ -14,7 +14,6 @@ public class CSVReader {
 
         ArrayList<Book> bookList = new ArrayList<Book>();
 
-
         try {
             BufferedReader reader = new BufferedReader(new FileReader(books));
 
@@ -37,7 +36,7 @@ public class CSVReader {
     }
 
     public static ArrayList<Movie> getMovies() {
-        String movies= "data/movies.csv";
+        String movies = "data/movies.csv";
         String line;
 
         ArrayList<Movie> movieList = new ArrayList<Movie>();
@@ -67,5 +66,36 @@ public class CSVReader {
         }
 
         return movieList;
+    }
+
+    public static ArrayList<User> getUsers() {
+        String users = "data/users.csv";
+        String line;
+
+        ArrayList<User> userList = new ArrayList<User>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(users));
+
+            while ((line = reader.readLine()) != null) {
+                String[] info = line.split(",");
+                User user;
+                String libraryNumber = info[0];
+                String password = info[1];
+                String name = info[2];
+                String email = info[3];
+                int phone = Integer.parseInt(info[4]);
+
+                user = new User(libraryNumber, password, name, email, phone);
+
+                userList.add(user);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
     }
 }

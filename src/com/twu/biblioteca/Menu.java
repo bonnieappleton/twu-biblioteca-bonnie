@@ -1,14 +1,19 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.MenuItems.*;
+
 import java.util.ArrayList;
+
 
 public class Menu {
     private static ArrayList<MenuItem> menu;
     private static Library library;
+    private static Authentication authentication;
 
-    public Menu(Library library) {
-        this.menu = createMenu();
+    public Menu(Library library, Authentication authentication) {
         this.library = library;
+        this.authentication = authentication;
+        this.menu = createMenu();
     }
 
     public static ArrayList<MenuItem> createMenu() {
@@ -48,7 +53,7 @@ public class Menu {
 
         for (MenuItem menuItem : menu) {
             if (lowercaseInput.equals(menuItem.getName())) {
-                menuItem.menuAction();
+                menuItem.menuAction(library, authentication);
                 inputIsValid = true;
             }
         }
@@ -57,92 +62,4 @@ public class Menu {
         }
         System.out.println();
     }
-
-    abstract static class MenuItem {
-        private String name;
-        private String displayName;
-
-        public void setNames(String name) {
-            this.name = name.toLowerCase();
-            this.displayName = name;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public String getDisplayName() {
-            return this.displayName;
-        }
-
-        public abstract void menuAction();
-    }
-
-    public static class LoginOption extends MenuItem {
-
-        public LoginOption() {
-            setNames("Login");
-        }
-
-        public void menuAction() {
-            Authentication.login();
-        }
-    }
-
-    public static class ListBooksOption extends MenuItem {
-
-        public ListBooksOption() {
-            setNames("List books");
-        }
-
-        public void menuAction() {
-            library.displayBooks();
-        }
-    }
-
-    public static class ListMoviesOption extends MenuItem {
-
-        public ListMoviesOption() {
-            setNames("List movies");
-        }
-
-        public void menuAction() {
-            library.displayMovies();
-        }
-    }
-
-    public static class CheckoutOption extends MenuItem {
-
-        public CheckoutOption() {
-            setNames("Checkout an item");
-        }
-
-        public void menuAction() {
-            library.checkoutItems();
-        }
-    }
-
-    public static class ReturnOption extends MenuItem {
-
-        public ReturnOption() {
-            setNames("Return an item");
-        }
-
-        public void menuAction() {
-            library.returnItems();
-        }
-    }
-
-    public static class QuitOption extends MenuItem {
-
-        public QuitOption() {
-            setNames("Quit");
-        }
-
-        public void menuAction() {
-            System.out.println("Goodbye!");
-            System.exit(0);
-        }
-    }
-
 }
